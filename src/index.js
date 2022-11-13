@@ -18,7 +18,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
-          <BrowserRouter basename="">
+          <BrowserRouter basename="/testTask-3_React-Blog/">
             <ToastContainer />
             <App />
           </BrowserRouter>
