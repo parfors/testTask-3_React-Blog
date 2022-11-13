@@ -6,21 +6,23 @@ import {
   NavLinkStyled,
   ContainerStyled,
 } from "./HeaderStyled";
+import { Outlet } from "react-router-dom";
 
 export default function Header() {
   return (
     <>
       <ContainerStyled>
         <HeaderStyled>
-          <LogoHolder href="">
+          <LogoHolder to="/">
             <LogoStyled />
           </LogoHolder>
           <NavLinkHolderStyled>
-            <NavLinkStyled href="">Статьи</NavLinkStyled>
-            <NavLinkStyled href="">Категории</NavLinkStyled>
+            <NavLinkStyled to={"articles"}>Статьи</NavLinkStyled>
+            <NavLinkStyled to={"categories"}>Категории</NavLinkStyled>
           </NavLinkHolderStyled>
         </HeaderStyled>
       </ContainerStyled>
+      <Outlet />
     </>
   );
 }

@@ -2,6 +2,7 @@ import {
   AuthorStyled,
   ButtonTextStyled,
   CategoryStyled,
+  DeleteButtonStyled,
   ImgStyled,
   ImgWrapperStyled,
   InfoWrapperStyled,
@@ -11,10 +12,13 @@ import {
 } from "./PostStyled";
 import localImg from "../../images/blog.jpg";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteBlog } from "redux/blogsSlice";
 
 const imgPath = "https://via.placeholder.com/80x120";
 
 export default function Post({ id, title, author, text, category, img }) {
+  const dispatch = useDispatch();
   const [textToggle, setTextToggle] = useState(false);
 
   const clickToggle = () => {
@@ -36,7 +40,10 @@ export default function Post({ id, title, author, text, category, img }) {
           <ImgStyled src={img || localImg || imgPath} />
         </ImgWrapperStyled>
         <InfoWrapperStyled>
-          <TitleStyled>Title: {title}</TitleStyled>
+          <TitleStyled>
+            Title: {title}
+            {id}
+          </TitleStyled>
           <AuthorStyled>Author: {author} </AuthorStyled>
           <TextStyled>
             Text: {processedText}
@@ -45,7 +52,12 @@ export default function Post({ id, title, author, text, category, img }) {
             </ButtonTextStyled>
           </TextStyled>
 
-          <CategoryStyled>Category: {category}</CategoryStyled>
+          <CategoryStyled>
+            {category === "-" ? "" : `Category: ${category}`}
+          </CategoryStyled>
+          <DeleteButtonStyled onClick={() => dispatch(deleteBlog(id))}>
+            Удалить пост
+          </DeleteButtonStyled>
         </InfoWrapperStyled>
       </PostWrapperStyled>
     </>

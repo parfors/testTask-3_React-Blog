@@ -35,6 +35,8 @@ export const AuthorStyled = styled.p`
 
 export const CategoryStyled = styled.p`
   font-style: italic;
+  display: inline-block;
+  margin-right: 50px;
 `;
 
 export const ButtonTextStyled = styled.button`
@@ -42,4 +44,8 @@ export const ButtonTextStyled = styled.button`
   border: none;
   cursor: pointer;
   color: ${(p) => p.theme.colors.blue};
+`;
+
+export const DeleteButtonStyled = styled.button`
+  display: inline-block;
 `;

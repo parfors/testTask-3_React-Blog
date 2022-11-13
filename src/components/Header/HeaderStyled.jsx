@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { FaBlog } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
 
 export const ContainerStyled = styled.section`
   max-width: 1200px;
@@ -15,10 +16,12 @@ export const HeaderStyled = styled.header`
   justify-content: space-between;
 `;
 
-export const LogoHolder = styled.a``;
+export const LogoHolder = styled(NavLink)``;
+
 export const LogoStyled = styled(FaBlog)`
   width: 40px;
   height: auto;
+  margin-left: 20px;
   fill: ${(p) => p.theme.colors.dark};
   &:hover {
     fill: ${(p) => p.theme.colors.accent};
@@ -26,7 +29,8 @@ export const LogoStyled = styled(FaBlog)`
 `;
 
 export const NavLinkHolderStyled = styled.div``;
-export const NavLinkStyled = styled.a`
+
+export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
   color: ${(p) => p.theme.colors.dark};
   font-size: ${(p) => p.theme.fontSizes.medium};
@@ -34,6 +38,9 @@ export const NavLinkStyled = styled.a`
     margin-right: 15px;
   }
   &:hover {
+    color: ${(p) => p.theme.colors.accent};
+  }
+  &.active {
     color: ${(p) => p.theme.colors.accent};
   }
 `;

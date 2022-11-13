@@ -1,15 +1,36 @@
-import Blog from "./Blog/Blog";
+import { Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
+
 import Footer from "./Footer/Footer";
-import Form from "./Form/Form";
-import Header from "./Header.jsx/Header";
+import { CategoryTitleStyled } from "./Categories/CategoriesStyled";
+import { ContainerStyled } from "./Header/HeaderStyled";
+
+const Articles = lazy(() => import("pages/Articles"));
+const NotFoundPage = lazy(() => import("pages/NotFound"));
+const HomePlaceHold = lazy(() => import("pages/HomePlaceHold"));
+const Category = lazy(() => import("pages/Category"));
+const Home = lazy(() => import("pages/Home"));
 
 function App() {
   return (
     <>
-      <Header />
-      <Form />
-      <Blog />
-      <Footer />
+      <Suspense
+        fallback={
+          <ContainerStyled>
+            <CategoryTitleStyled>Loading...</CategoryTitleStyled>
+          </ContainerStyled>
+        }
+      >
+        <Routes>
+          <Route path="/" element={<Home />}>
+            <Route index element={<HomePlaceHold />} />
+            <Route path="/categories" element={<Category />} />
+            <Route path="/articles" element={<Articles />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+        <Footer />
+      </Suspense>
     </>
   );
 }
