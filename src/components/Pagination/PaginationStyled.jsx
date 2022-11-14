@@ -21,6 +21,7 @@ export const PaginationLinkStyled = styled.a`
   font-size: ${(p) => p.theme.fontSizes.medium};
   color: ${(p) => p.theme.colors.dark};
   cursor: pointer;
+  color: ${(props) => (props.active ? "#FAD34F" : "#3E3E3E")};
   &:hover {
     color: ${(p) => p.theme.colors.accent};
   }
