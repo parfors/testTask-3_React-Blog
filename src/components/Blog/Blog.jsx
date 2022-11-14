@@ -19,6 +19,7 @@ const LIMIT = 10;
 export default function Blog() {
   // -----------------------------Pagination------------------------------
   const blogs = useSelector(getBlogs);
+  const [isActive, setIsActive] = useState(1);
   const [isInfinite, setIsInfinite] = useState(false);
   const [blogsPerPage, setBlogsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
@@ -32,6 +33,8 @@ export default function Blog() {
   };
 
   const selectHandler = (e) => {
+    setCurrentPage(1);
+    setIsActive(1);
     const value = e.target.value;
     if (value === "-") {
       setIsInfinite(true);
@@ -123,6 +126,8 @@ export default function Blog() {
             blogsPerPage={blogsPerPage}
             paginate={paginate}
             totalBlogs={blogs.length}
+            isActive={isActive}
+            setIsActive={setIsActive}
           />
         )}
       </BlogContainerStyled>

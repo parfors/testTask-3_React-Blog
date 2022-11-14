@@ -3,10 +3,14 @@ import {
   PaginationLinkStyled,
   PaginationListStyled,
 } from "./PaginationStyled";
-import { useState } from "react";
 
-export default function Pagination({ blogsPerPage, totalBlogs, paginate }) {
-  const [isActive, setIsActive] = useState(1);
+export default function Pagination({
+  isActive,
+  setIsActive,
+  blogsPerPage,
+  totalBlogs,
+  paginate,
+}) {
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(totalBlogs / blogsPerPage); i++) {
     pageNumbers.push(i);
