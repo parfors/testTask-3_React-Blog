@@ -8,7 +8,7 @@ export const theme = Object.freeze({
     inputDark: "#2D2D2D",
     grey: "#D8D8D8",
     border: "#DCDCDC",
-    icons: "#696969",
+    links: "#696969",
     blue: "#1e1ee6",
   },
   fontSizes: {

@@ -58,7 +58,7 @@ export const ButtonStyled = styled.button`
   margin-bottom: 15px;
   font-size: ${(p) => p.theme.fontSizes.medium};
   border-radius: 4px;
-  background-color: ${(p) => p.theme.colors.white};
+  background-color: ${(p) => p.theme.colors.links};
   &:hover {
     background-color: ${(p) => p.theme.colors.accent};
   }

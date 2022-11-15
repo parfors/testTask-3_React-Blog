@@ -6,3 +6,4 @@ export * from "components/Categories";
 export * from "components/HomePlaceholder";
 export * from "components/Pagination";
 export * from "components/Post";
+export * from "components/RegisterForm";

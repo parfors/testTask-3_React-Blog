@@ -21,7 +21,7 @@ export const LogoHolder = styled(NavLink)``;
 export const LogoStyled = styled(FaBlog)`
   width: 40px;
   height: auto;
-  margin-left: 20px;
+  margin-left: 140px;
   fill: ${(p) => p.theme.colors.dark};
   &:hover {
     fill: ${(p) => p.theme.colors.accent};
@@ -34,6 +34,10 @@ export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
   color: ${(p) => p.theme.colors.dark};
   font-size: ${(p) => p.theme.fontSizes.medium};
+  padding: 6px;
+  border-radius: 4px;
+  background-color: ${(p) => p.theme.colors.links};
+
   &:not(:last-child) {
     margin-right: 15px;
   }
