@@ -16,7 +16,7 @@ import {
   WrapperStyled,
 } from "./FormStyled";
 import { useDispatch } from "react-redux";
-import { addBlog } from "redux/blogsSlice";
+import { addBlog } from "redux/blogs/blogsSlice";
 import { useLocalStorage } from "hooks/useLocalStorage";
 
 export default function Form() {

@@ -13,7 +13,7 @@ import {
 import localImg from "../../images/blog.jpg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteBlog } from "redux/blogsSlice";
+import { deleteBlog } from "redux/blogs/blogsSlice";
 
 const imgPath = "https://via.placeholder.com/80x120";
 

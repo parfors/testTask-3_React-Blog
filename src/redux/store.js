@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
-import blogsReducer from "./blogsSlice";
+import blogsReducer from "./blogs/blogsSlice";
+import authReducer from "./auth/authSlice";
 import {
   persistStore,
   persistReducer,
@@ -18,10 +19,13 @@ const persistConfig = {
   storage,
 };
 
-const persistedReducer = persistReducer(persistConfig, blogsReducer);
+const persistedReducer = persistReducer(persistConfig, authReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: {
+    auth: persistedReducer,
+    blogs: blogsReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
