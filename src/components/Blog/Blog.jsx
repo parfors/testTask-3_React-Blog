@@ -5,14 +5,14 @@ import {
   BlogListStyled,
   BlogSelectStyled,
   OptionStyled,
-} from "./BlogStyled";
+  PlaceholderTitleStyled,
+} from "components";
 import { useSelector } from "react-redux";
 import { useState } from "react";
 import { getBlogs } from "redux/selector";
 import Pagination from "components/Pagination/Pagination";
 import { pagesAmount } from "helpers/pagesAmount";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { PlaceholderTitleStyled } from "components/HomePlaceholder/HomePlaceholderStyled";
 
 const LIMIT = 10;
 

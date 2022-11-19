@@ -1,10 +1,10 @@
-import { ContainerStyled } from "components/Header/HeaderStyled";
 import React from "react";
 import {
   PlaceholderImgStyled,
   PlaceholderImgWrapper,
   PlaceholderTitleStyled,
-} from "./HomePlaceholderStyled";
+  ContainerStyled,
+} from "components";
 
 export default function HomePlaceholder() {
   return (

@@ -9,11 +9,11 @@ import {
   PostWrapperStyled,
   TextStyled,
   TitleStyled,
-} from "./PostStyled";
+} from "components";
 import localImg from "../../images/blog.jpg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteBlog } from "redux/blogs/blogsSlice";
+// import { deleteBlog } from "redux/blogs/blogsSlice";
 
 const imgPath = "https://via.placeholder.com/80x120";
 
@@ -55,7 +55,9 @@ export default function Post({ id, title, author, text, category, img }) {
           <CategoryStyled>
             {category === "-" ? "" : `Category: ${category}`}
           </CategoryStyled>
-          <DeleteButtonStyled onClick={() => dispatch(deleteBlog(id))}>
+          <DeleteButtonStyled
+          // onClick={() => dispatch(deleteBlog(id))}
+          >
             Удалить пост
           </DeleteButtonStyled>
         </InfoWrapperStyled>

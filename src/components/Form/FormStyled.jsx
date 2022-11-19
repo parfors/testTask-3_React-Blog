@@ -42,6 +42,7 @@ export const OptionStyled = styled.option``;
 export const TextAreaWrapperStyled = styled(InputWrapper)``;
 
 export const TextAreaStyled = styled.textarea`
+resize: none;
   font-size: ${(p) => p.theme.fontSizes.medium};
 
   padding: 15px;

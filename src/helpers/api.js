@@ -16,13 +16,28 @@ export const performLogin = async (body) => {
   return data;
 };
 
+export const performLogout = async () => {
+  const { data } = await instance.get("api/users/logout");
+  return data;
+};
+
+export const getCurrent = async () => {
+  const { data } = await instance.get("api/users/current");
+  return data;
+};
+
 export const getAllBlogs = async () => {
   const { data } = await instance.get("/api/blogs");
   return data;
 };
 
-export const performLogout = async () => {
-  const { data } = await instance.get("api/users/logout");
+export const addBlog = async (blog) => {
+  const { data } = await instance.post("/api/blogs", blog);
+  return data;
+};
+
+export const deleteBlog = async (id) => {
+  const { data } = await instance.delete(`/api/blogs/${id}`);
   return data;
 };
 

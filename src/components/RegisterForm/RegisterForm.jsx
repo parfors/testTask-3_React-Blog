@@ -5,11 +5,12 @@ import {
   InputWrapper,
   LabelSpanStyled,
   LabelStyled,
-} from "components/Form/FormStyled";
+  RegisterFormWrapper,
+} from "components";
 import { useDispatch } from "react-redux";
 import * as authOperations from "redux/auth/auth-operations";
 import useForm from "../../hooks/useForm";
-import { RegisterFormWrapper } from "./RegisterFormStyled";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   name: "",
@@ -19,9 +20,11 @@ const initialState = {
 
 export default function RegisterForm() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     dispatch(authOperations.register(data));
+    await navigate("/login");
   };
 
   const { handleChange, handleSubmit, state } = useForm(initialState, onSubmit);

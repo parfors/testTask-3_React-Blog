@@ -1,11 +1,11 @@
-import { ContainerStyled } from "components/Header/HeaderStyled";
 import {
   CategoryImgStyled,
   CategoryImgWrapper,
   CategoryTextStyled,
   CategoryTitleStyled,
   ReturnBtn,
-} from "./CategoriesStyled";
+  ContainerStyled,
+} from "components";
 import { useNavigate } from "react-router-dom";
 import { categoryList } from "helpers/categoryLits";
 

@@ -2,7 +2,7 @@ import {
   PaginationItemStyled,
   PaginationLinkStyled,
   PaginationListStyled,
-} from "./PaginationStyled";
+} from "components";
 
 export default function Pagination({
   isActive,

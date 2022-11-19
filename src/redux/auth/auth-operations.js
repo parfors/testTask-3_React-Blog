@@ -42,9 +42,27 @@ export const logout = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
   try {
     const result = await api.performLogout();
     token.deleteToken();
+    toast.success("Logout success");
     return result;
   } catch (error) {
     toast.error(error.response.data.message);
     return thunkAPI.rejectWithValue(error);
   }
 });
+
+export const current = createAsyncThunk(
+  "auth/current",
+  async (_, { getState, rejectWithValue }) => {
+    const state = getState();
+    if (state.auth.token === "") {
+      return rejectWithValue("no user found");
+    }
+    token.setToken(state.auth.token);
+    try {
+      const result = api.getCurrent();
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);

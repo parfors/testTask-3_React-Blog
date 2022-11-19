@@ -4,11 +4,11 @@ import {
   FormStyled,
   LabelSpanStyled,
   LabelStyled,
-} from "components/Form/FormStyled";
+  LoginInputWrapper,
+  RegisterFormWrapper,
+} from "components";
 import { useDispatch } from "react-redux";
 import * as authOperations from "redux/auth/auth-operations";
-import { RegisterFormWrapper } from "../RegisterForm/RegisterFormStyled";
-import { LoginInputWrapper } from "./LoginFormStyled";
 import useForm from "../../hooks/useForm";
 
 const initialState = {
@@ -51,7 +51,7 @@ export default function LoginForm() {
             </LabelStyled>
           </LoginInputWrapper>
         </RegisterFormWrapper>
-        <ButtonStyled type="submit">Sign up</ButtonStyled>
+        <ButtonStyled type="submit">Вход</ButtonStyled>
       </FormStyled>
       ;
     </>

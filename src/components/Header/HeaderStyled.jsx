@@ -16,12 +16,17 @@ export const HeaderStyled = styled.header`
   justify-content: space-between;
 `;
 
-export const LogoHolder = styled(NavLink)``;
+export const LogoHolder = styled(NavLink)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+`;
 
 export const LogoStyled = styled(FaBlog)`
   width: 40px;
   height: auto;
-  margin-left: 140px;
+
   fill: ${(p) => p.theme.colors.dark};
   &:hover {
     fill: ${(p) => p.theme.colors.accent};
@@ -29,6 +34,12 @@ export const LogoStyled = styled(FaBlog)`
 `;
 
 export const NavLinkHolderStyled = styled.div``;
+export const UserMenuHolderStyled = styled.div`
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 export const NavLinkStyled = styled(NavLink)`
   text-decoration: none;
@@ -47,4 +58,12 @@ export const NavLinkStyled = styled(NavLink)`
   &.active {
     color: ${(p) => p.theme.colors.accent};
   }
+`;
+
+export const SuspenseStyled = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 200px;
+  padding-bottom: 200px;
 `;

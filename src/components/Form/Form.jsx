@@ -16,7 +16,7 @@ import {
   WrapperStyled,
 } from "./FormStyled";
 import { useDispatch } from "react-redux";
-import { addBlog } from "redux/blogs/blogsSlice";
+// import { addBlog } from "redux/blogs/blogsSlice";
 import { useLocalStorage } from "hooks/useLocalStorage";
 
 export default function Form() {
@@ -69,7 +69,7 @@ export default function Form() {
       text,
       category,
     };
-    dispatch(addBlog(blog));
+    // dispatch(addBlog(blog));
     resetState();
   };
 

@@ -20,8 +20,6 @@ export const BlogSelectStyled = styled.select`
   margin-left: 20px;
 `;
 
-export const OptionStyled = styled.option``;
-
 export const BlogLabelStyled = styled.label`
   display: inline-block;
   text-align: center;

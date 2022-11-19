@@ -1,5 +1,4 @@
-import { ContainerStyled } from "components/Header/HeaderStyled";
-import { FooterTextStyled } from "./FooterStyled";
+import { ContainerStyled, FooterTextStyled } from "components";
 
 export default function Footer() {
   return (
