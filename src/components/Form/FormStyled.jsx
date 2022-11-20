@@ -13,7 +13,7 @@ export const WrapperStyled = styled.div`
 export const LabelStyled = styled.label`
   display: flex;
   justify-content: space-between;
-  &:not(:nth-child(n + 3)) {
+  &:not(:nth-child(n + 4)) {
     margin-bottom: 15px;
   }
 `;
@@ -31,7 +31,7 @@ export const FormInputStyled = styled.input`
 
 export const InputWrapper = styled.div`
   width: 50%;
-  height: 145px;
+  height: 195px;
   padding: 20px;
 `;
 
@@ -42,7 +42,7 @@ export const OptionStyled = styled.option``;
 export const TextAreaWrapperStyled = styled(InputWrapper)``;
 
 export const TextAreaStyled = styled.textarea`
-resize: none;
+  resize: none;
   font-size: ${(p) => p.theme.fontSizes.medium};
 
   padding: 15px;

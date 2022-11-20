@@ -1,7 +1,7 @@
 import {
   CategoryTitleStyled,
   ReturnBtn,
-} from "components/Categories/CategoriesStyled";
+} from "components/CategoryList/CategoryListStyled";
 import {
   PlaceholderImgStyled,
   PlaceholderImgWrapper,

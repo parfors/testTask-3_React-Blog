@@ -31,8 +31,19 @@ export const getAllBlogs = async () => {
   return data;
 };
 
+export const getCategoryBlogs = async (category) => {
+  const { data } = await instance.get(`/api/blogs/${category}`);
+  return data;
+};
+export const getMyBlogs = async () => {
+  const { data } = await instance.get(`/api/blogs/my_articles`);
+  return data;
+};
+
 export const addBlog = async (blog) => {
-  const { data } = await instance.post("/api/blogs", blog);
+  const { data } = await instance.post("/api/blogs", blog, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
   return data;
 };
 

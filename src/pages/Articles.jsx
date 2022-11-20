@@ -1,3 +1,4 @@
+import { ContainerStyled } from "components";
 import Blog from "components/Blog/Blog";
 import Form from "components/Form/Form";
 import React from "react";
@@ -8,8 +9,10 @@ export default function Articles() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   return (
     <>
-      {isLoggedIn && <Form />}
-      <Blog />
+      <ContainerStyled>
+        {isLoggedIn && <Form />}
+        <Blog />
+      </ContainerStyled>
     </>
   );
 }

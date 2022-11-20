@@ -1,7 +1,5 @@
 import { categoryList } from "../../helpers/categoryLits";
-import { ContainerStyled } from "../Header/HeaderStyled";
 import { useState } from "react";
-import { nanoid } from "nanoid";
 import {
   ButtonStyled,
   FormInputStyled,
@@ -16,14 +14,15 @@ import {
   WrapperStyled,
 } from "./FormStyled";
 import { useDispatch } from "react-redux";
-// import { addBlog } from "redux/blogs/blogsSlice";
 import { useLocalStorage } from "hooks/useLocalStorage";
+import { addBlog } from "redux/blogs/blog-operations";
 
 export default function Form() {
   const dispatch = useDispatch();
   const [title, setTitle] = useLocalStorage("title", "");
   const [author, setAuthor] = useLocalStorage("author", "");
   const [text, setText] = useLocalStorage("text", "");
+  const [file, setFile] = useState(null);
   const [category, setCategory] = useState("-");
 
   const resetState = () => {
@@ -31,6 +30,14 @@ export default function Form() {
     setTitle("");
     setAuthor("");
     setCategory("-");
+  };
+
+  const uploadContent = (e) => {
+    e.preventDefault();
+    const file = e.target.files[0];
+    if (file) {
+      setFile(file);
+    }
   };
 
   const changeHandler = (e) => {
@@ -61,72 +68,85 @@ export default function Form() {
       alert("Please fill in all fields");
       return;
     }
-    const blog = {
-      id: nanoid(),
-      title,
-      author,
-      img: "https://via.placeholder.com/80x120",
-      text,
-      category,
-    };
-    // dispatch(addBlog(blog));
+
+    let processedCategory;
+    if (category === "-") {
+      processedCategory = "";
+    } else {
+      processedCategory = category;
+    }
+
+    const data = new FormData();
+    data.append("title", title);
+    data.append("author", author);
+    data.append("text", text);
+    data.append("category", processedCategory.toLocaleLowerCase());
+    data.append("cover", file);
+    dispatch(addBlog(data));
     resetState();
   };
 
   return (
     <>
-      <ContainerStyled>
-        <FormStyled onSubmit={submitHandler}>
-          <WrapperStyled>
-            <InputWrapper>
-              <LabelStyled>
-                <LabelSpanStyled>Заголовок</LabelSpanStyled>
-                <FormInputStyled
-                  type="text"
-                  onChange={changeHandler}
-                  name="title"
-                  value={title}
-                />
-              </LabelStyled>
-              <LabelStyled>
-                <LabelSpanStyled>Автор</LabelSpanStyled>
-                <FormInputStyled
-                  type="text"
-                  onChange={changeHandler}
-                  name="author"
-                  value={author}
-                />
-              </LabelStyled>
-              <LabelStyled>
-                <LabelSpanStyled>Категория</LabelSpanStyled>
-                <SelectStyled
-                  onChange={changeHandler}
-                  name="category"
-                  value={category}
-                >
-                  {categoryList.map((el) => (
-                    <OptionStyled key={el.length} value={el}>
-                      {el}
-                    </OptionStyled>
-                  ))}
-                </SelectStyled>
-              </LabelStyled>
-            </InputWrapper>
-            <TextAreaWrapperStyled>
-              <LabelStyled>
-                <LabelSpanStyled>Текст</LabelSpanStyled>
-                <TextAreaStyled
-                  placeholder="Что у вас нового?"
-                  onChange={changeHandler}
-                  name="text"
-                  value={text}
-                />
-              </LabelStyled>
-            </TextAreaWrapperStyled>
-          </WrapperStyled>
-          <ButtonStyled>Добивить</ButtonStyled>
-        </FormStyled>
-      </ContainerStyled>
+      <FormStyled onSubmit={submitHandler} enctype="multipart/form-data">
+        <WrapperStyled>
+          <InputWrapper>
+            <LabelStyled>
+              <LabelSpanStyled>Заголовок</LabelSpanStyled>
+              <FormInputStyled
+                type="text"
+                onChange={changeHandler}
+                name="title"
+                value={title}
+              />
+            </LabelStyled>
+            <LabelStyled>
+              <LabelSpanStyled>Автор</LabelSpanStyled>
+              <FormInputStyled
+                type="text"
+                onChange={changeHandler}
+                name="author"
+                value={author}
+              />
+            </LabelStyled>
+            <LabelStyled>
+              <LabelSpanStyled>Обложка</LabelSpanStyled>
+              <FormInputStyled
+                type="file"
+                onChange={uploadContent}
+                name="cover"
+                // value={author}
+              />
+            </LabelStyled>
+            <LabelStyled>
+              <LabelSpanStyled>Категория</LabelSpanStyled>
+              <SelectStyled
+                onChange={changeHandler}
+                name="category"
+                value={category}
+              >
+                {categoryList.map((el) => (
+                  <OptionStyled key={el.length} value={el}>
+                    {el}
+                  </OptionStyled>
+                ))}
+              </SelectStyled>
+            </LabelStyled>
+          </InputWrapper>
+          <TextAreaWrapperStyled>
+            <LabelStyled>
+              <LabelSpanStyled>Текст</LabelSpanStyled>
+              <TextAreaStyled
+                placeholder="Что у вас нового?"
+                onChange={changeHandler}
+                name="text"
+                value={text}
+              />
+            </LabelStyled>
+          </TextAreaWrapperStyled>
+        </WrapperStyled>
+        <ButtonStyled type="submit">Добивить</ButtonStyled>
+      </FormStyled>
     </>
   );
 }

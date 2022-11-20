@@ -3,15 +3,78 @@ import * as blogOperation from "./blog-operations";
 
 const initialState = {
   blogs: [],
-  loading: false,
-  error: null,
+  blogLoading: false,
+  blogError: null,
 };
 
 const blogSlice = createSlice({
   name: "blogs",
   initialState: initialState,
   reducers: {},
-  extraReducers: {},
+  extraReducers: {
+    [blogOperation.getAllBlogs.pending]: (state) => {
+      state.blogLoading = true;
+      state.blogError = false;
+    },
+    [blogOperation.getAllBlogs.fulfilled]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogs = payload.data;
+    },
+    [blogOperation.getAllBlogs.rejected]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogError = payload;
+    },
+    [blogOperation.addBlog.pending]: (state, { payload }) => {
+      state.blogLoading = true;
+      state.blogError = false;
+    },
+    [blogOperation.addBlog.fulfilled]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogs.push(payload.data);
+    },
+    [blogOperation.addBlog.rejected]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogError = payload;
+    },
+    [blogOperation.deleteBlog.pending]: (state) => {
+      state.blogLoading = true;
+      state.blogError = false;
+    },
+    [blogOperation.deleteBlog.fulfilled]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogs = state.blogs.filter((el) => el._id !== payload);
+    },
+    [blogOperation.deleteBlog.rejected]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogError = payload;
+    },
+    [blogOperation.getCategoryBlogs.pending]: (state) => {
+      state.blogLoading = true;
+      state.blogError = false;
+    },
+    [blogOperation.getCategoryBlogs.fulfilled]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogs = payload.data;
+    },
+    [blogOperation.getCategoryBlogs.rejected]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogError = payload;
+      state.blogs = [];
+    },
+    [blogOperation.getMyBlogs.pending]: (state) => {
+      state.blogLoading = true;
+      state.blogError = false;
+    },
+    [blogOperation.getMyBlogs.fulfilled]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogs = payload.data;
+    },
+    [blogOperation.getMyBlogs.rejected]: (state, { payload }) => {
+      state.blogLoading = false;
+      state.blogError = payload;
+      state.blogs = [];
+    },
+  },
 });
 
 export default blogSlice.reducer;

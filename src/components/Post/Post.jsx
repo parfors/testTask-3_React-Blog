@@ -13,11 +13,20 @@ import {
 import localImg from "../../images/blog.jpg";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-// import { deleteBlog } from "redux/blogs/blogsSlice";
+import { deleteBlog } from "redux/blogs/blog-operations";
 
 const imgPath = "https://via.placeholder.com/80x120";
+const baseUrl = "http://localhost:3002/";
 
-export default function Post({ id, title, author, text, category, img }) {
+export default function Post({
+  id,
+  title,
+  author,
+  text,
+  category,
+  coverUrl,
+  isUsersBlogs,
+}) {
   const dispatch = useDispatch();
   const [textToggle, setTextToggle] = useState(false);
 
@@ -32,12 +41,13 @@ export default function Post({ id, title, author, text, category, img }) {
   if (textToggle === true) {
     processedText = text;
   }
-
   return (
     <>
       <PostWrapperStyled>
         <ImgWrapperStyled>
-          <ImgStyled src={img || localImg || imgPath} />
+          <ImgStyled
+            src={coverUrl ? `${baseUrl}/${coverUrl}` : localImg || imgPath}
+          />
         </ImgWrapperStyled>
         <InfoWrapperStyled>
           <TitleStyled>
@@ -48,18 +58,20 @@ export default function Post({ id, title, author, text, category, img }) {
           <TextStyled>
             Text: {processedText}
             <ButtonTextStyled onClick={clickToggle}>
-              {!textToggle ? "..." : "show less"}
+              {text.length < 250 ? "" : !textToggle ? "..." : "show less"}
             </ButtonTextStyled>
           </TextStyled>
 
           <CategoryStyled>
             {category === "-" ? "" : `Category: ${category}`}
           </CategoryStyled>
-          <DeleteButtonStyled
-          // onClick={() => dispatch(deleteBlog(id))}
-          >
-            Удалить пост
-          </DeleteButtonStyled>
+          {isUsersBlogs ? (
+            <DeleteButtonStyled onClick={() => dispatch(deleteBlog(id))}>
+              Удалить пост
+            </DeleteButtonStyled>
+          ) : (
+            ""
+          )}
         </InfoWrapperStyled>
       </PostWrapperStyled>
     </>

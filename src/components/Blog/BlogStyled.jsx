@@ -1,10 +1,4 @@
 import styled from "styled-components";
-import { ContainerStyled } from "../Header/HeaderStyled";
-
-export const BlogContainerStyled = styled(ContainerStyled)`
-  /* display: flex;
-  flex-wrap: wrap; */
-`;
 
 export const BlogListStyled = styled.ul`
   list-style: none;
