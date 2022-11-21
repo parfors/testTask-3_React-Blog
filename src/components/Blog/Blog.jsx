@@ -9,46 +9,55 @@ import { pagesAmount } from "helpers/pagesAmount";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "redux/blogs/blog-operations";
-import { getBlogs } from "redux/selector";
+import { getBlogs, getTotal } from "redux/selector";
 import Post from "../Post/Post";
+import { useSearchParams } from "react-router-dom";
 
 export default function Blog() {
   // -----------------------------Pagination------------------------------
+
+  const [searchParams, setSearchParams] = useSearchParams({
+    limit: Infinity,
+    page: 1,
+  });
+
+  const page = searchParams.get("page");
+  const limit = searchParams.get("limit");
+
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getAllBlogs());
-  }, [dispatch]);
+    dispatch(getAllBlogs({ page, limit }));
+  }, [dispatch, limit, page]);
 
   const blogs = useSelector(getBlogs);
+  const total = useSelector(getTotal);
   const [isActive, setIsActive] = useState(1);
-  const [blogsPerPage, setBlogsPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
   const [isUsersBlogs] = useState(false);
 
-  const lastBlogIndex = currentPage * blogsPerPage;
-  const firstBlogIndex = lastBlogIndex - blogsPerPage;
-  const currentBlog = blogs.slice(firstBlogIndex, lastBlogIndex);
+  console.log(`Page${page}, Limit ${limit}`);
+  console.log(blogs);
 
   const paginate = (pageNumber) => {
-    setCurrentPage(pageNumber);
+    setSearchParams({ page: pageNumber, limit });
   };
 
   const selectHandler = (e) => {
-    setCurrentPage(1);
+    setSearchParams({ page: 1 });
+
     setIsActive(1);
     const value = e.target.value;
     if (value === "-") {
-      setBlogsPerPage(Infinity);
+      setSearchParams({ limit: Infinity });
       return;
     }
-    setBlogsPerPage(value);
+    setSearchParams({ limit: e.target.value });
   };
 
   return (
     <>
       <BlogLabelStyled>
         Количество постов на странице
-        <BlogSelectStyled defaultValue={10} onChange={selectHandler}>
+        <BlogSelectStyled defaultValue={"-"} onChange={selectHandler}>
           {pagesAmount.map((el, index) => (
             <OptionStyled key={index} value={el}>
               {el}
@@ -58,7 +67,7 @@ export default function Blog() {
       </BlogLabelStyled>
       <BlogListStyled>
         <>
-          {currentBlog.map(
+          {blogs.map(
             ({ _id, title, author, text, category, img, coverUrl }) => (
               <Post
                 key={_id}
@@ -77,9 +86,9 @@ export default function Blog() {
       </BlogListStyled>
 
       <Pagination
-        blogsPerPage={blogsPerPage}
+        blogsPerPage={limit}
         paginate={paginate}
-        totalBlogs={blogs.length}
+        totalBlogs={total}
         isActive={isActive}
         setIsActive={setIsActive}
       />

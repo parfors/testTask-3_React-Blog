@@ -4,9 +4,9 @@ import { toast } from "react-toastify";
 
 export const getAllBlogs = createAsyncThunk(
   "blog/getAll",
-  async (_, thunkAPI) => {
+  async ({ page, limit }, thunkAPI) => {
     try {
-      const result = await api.getAllBlogs();
+      const result = await api.getAllBlogs({ page, limit });
       return result;
     } catch (error) {
       toast.error(error.response.data.message);

@@ -5,6 +5,7 @@ const initialState = {
   blogs: [],
   blogLoading: false,
   blogError: null,
+  total: "",
 };
 
 const blogSlice = createSlice({
@@ -19,6 +20,7 @@ const blogSlice = createSlice({
     [blogOperation.getAllBlogs.fulfilled]: (state, { payload }) => {
       state.blogLoading = false;
       state.blogs = payload.data;
+      state.total = payload.total;
     },
     [blogOperation.getAllBlogs.rejected]: (state, { payload }) => {
       state.blogLoading = false;
@@ -60,6 +62,7 @@ const blogSlice = createSlice({
       state.blogLoading = false;
       state.blogError = payload;
       state.blogs = [];
+      state.total = "";
     },
     [blogOperation.getMyBlogs.pending]: (state) => {
       state.blogLoading = true;
@@ -73,6 +76,7 @@ const blogSlice = createSlice({
       state.blogLoading = false;
       state.blogError = payload;
       state.blogs = [];
+      state.total = "";
     },
   },
 });

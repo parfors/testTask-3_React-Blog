@@ -5,3 +5,4 @@ export const getUserEmail = (state) => state.auth.user.email;
 export const getBlogs = (state) => state.blogs.blogs;
 export const getBlogLoading = (state) => state.blogs.blogLoading;
 export const getBlogError = (state) => state.blogs.blogError;
+export const getTotal = (state) => state.blogs.total;

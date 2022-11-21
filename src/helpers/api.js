@@ -26,8 +26,13 @@ export const getCurrent = async () => {
   return data;
 };
 
-export const getAllBlogs = async () => {
-  const { data } = await instance.get("/api/blogs");
+export const getAllBlogs = async ({ page, limit }) => {
+  const { data } = await instance.get("/api/blogs", {
+    params: {
+      page,
+      limit,
+    },
+  });
   return data;
 };
 
