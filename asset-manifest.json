@@ -1,13 +1,14 @@
 {
   "files": {
     "main.css": "/testTask-3_React-Blog/static/css/main.6df6ef7f.css",
-    "main.js": "/testTask-3_React-Blog/static/js/main.fbf601f5.js",
+    "main.js": "/testTask-3_React-Blog/static/js/main.172b55a1.js",
+    "static/media/placeholder.jpg": "/testTask-3_React-Blog/static/media/placeholder.41bdb0503c37c8adf67a.jpg",
     "index.html": "/testTask-3_React-Blog/index.html",
     "main.6df6ef7f.css.map": "/testTask-3_React-Blog/static/css/main.6df6ef7f.css.map",
-    "main.fbf601f5.js.map": "/testTask-3_React-Blog/static/js/main.fbf601f5.js.map"
+    "main.172b55a1.js.map": "/testTask-3_React-Blog/static/js/main.172b55a1.js.map"
   },
   "entrypoints": [
     "static/css/main.6df6ef7f.css",
-    "static/js/main.fbf601f5.js"
+    "static/js/main.172b55a1.js"
   ]
 }
