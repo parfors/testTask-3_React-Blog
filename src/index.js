@@ -19,7 +19,7 @@ root.render(
       <PersistGate loading={null} persistor={persistor}>
         <ThemeProvider theme={theme}>
           <BrowserRouter basename="">
-            <ToastContainer />
+            <ToastContainer autoClose="600" />
             <App />
           </BrowserRouter>
         </ThemeProvider>

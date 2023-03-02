@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3002/";
+const BASE_URL = "https://test-task-3-node-blog.onrender.com/";
 
 const instance = axios.create({
   baseURL: BASE_URL,

@@ -1,4 +1,4 @@
-import { lazy } from "react";
+// import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Home from "pages/Home";
@@ -10,10 +10,15 @@ import PrivetRout from "./PrivetRout/PrivetRout";
 import MyArticles from "pages/MyArticles";
 import SelectedCategory from "components/SelectedCategory/SelectedCategory";
 
-const Articles = lazy(() => import("pages/Articles"));
-const NotFoundPage = lazy(() => import("pages/NotFound"));
-const HomePlaceHold = lazy(() => import("pages/HomePlaceHold"));
-const Category = lazy(() => import("pages/Category"));
+// const Articles = lazy(() => import("pages/Articles"));
+// const NotFoundPage = lazy(() => import("pages/NotFound"));
+// const HomePlaceHold = lazy(() => import("pages/HomePlaceHold"));
+// const Category = lazy(() => import("pages/Category"));
+
+import HomePlaceHold from "pages/HomePlaceHold";
+import Articles from "pages/Articles";
+import Category from "pages/Category";
+import NotFoundPage from "pages/NotFound";
 
 function App() {
   return (
