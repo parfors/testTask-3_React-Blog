@@ -14,9 +14,10 @@ export default function HomePlaceholder() {
     <ContainerStyled>
       <PlaceholderTitleStyled>Добро пожаловать</PlaceholderTitleStyled>
       <PlaceholderTextStyled>
-        Вы на странице одного из моих тестовых заданий. Проект не стилизирован,
-        его задачай было продемонстрировать мои навыки владение следующими
-        технологиями:{" "}
+        Вы на странице одного из моих тестовых заданий (нужно немного подождать
+        пока запустится серверная часть и обновить страницу). Проект не
+        стилизирован, его задачай было продемонстрировать мои навыки владения
+        следующими технологиями:{" "}
         <PlaceholderSpanStyled>
           React, React Router, Redux, StyleComponents, Node.js, Express,
           MongoDB.
